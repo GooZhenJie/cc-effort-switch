@@ -1,0 +1,9 @@
+.DS_Store
+.build/
+.swiftpm/
+build/
+Signing.local
+
+/docs/
+.claude
+CLAUDE.md
