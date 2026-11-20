@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>CcEffortSwitch</title>
+        <item>
+            <title>0.1.0</title>
+            <pubDate>Fri, 20 Nov 2026 17:04:39 +0800</pubDate>
+            <link>https://github.com/GooZhenJie/cc-effort-switch/releases</link>
+            <sparkle:version>1</sparkle:version>
+            <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[First release.
+
+- Hold ⌘ and press E in Claude to move through the Effort menu, then release ⌘ to select.
+- Skips Ultracode unless you remove it from the config file.
+- Shows the current effort level in the menu bar.
+
+Requires macOS 15 or later on Apple silicon. The first time you open CcEffortSwitch, macOS may refuse to open it; [First launch](https://github.com/GooZhenJie/cc-effort-switch#first-launch) explains what to do.
+]]></description>
+            <enclosure url="https://github.com/GooZhenJie/cc-effort-switch/releases/download/v0.1.0/CcEffortSwitch-0.1.0.zip" length="2415994" type="application/octet-stream" sparkle:edSignature="wPzmIdIwET3rx53knHGjuaHu/o30uOMwxvgEC+EHD5pREVht4ciYMnEIdxNNN/s90r7kew+S6h4zwGPFJLJnAA=="/>
+        </item>
+    </channel>
+</rss>
