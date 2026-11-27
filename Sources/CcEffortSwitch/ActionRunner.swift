@@ -14,6 +14,8 @@ enum ActionRunner {
         queue.async {
             let wait = scheduled.notBefore - ProcessInfo.processInfo.systemUptime
             if wait > 0 { Thread.sleep(forTimeInterval: wait) }
+            let endsSession = scheduled.action == .select || scheduled.action == .cancel
+            defer { if endsSession { PointerShield.postBarrier() } }
             let frontmost = DispatchQueue.main.sync {
                 NSWorkspace.shared.frontmostApplication?.bundleIdentifier
             }
@@ -22,6 +24,8 @@ enum ActionRunner {
                 return
             }
             if scheduled.action == .open {
+                let movedAway = PointerShield.moveAway(in: scheduled.rule.application)
+                log.notice("pointer moved away=\(movedAway)")
                 post(scheduled.rule.open)
                 session = MenuSession(rule: scheduled.rule, layout: scheduled.rule.skip.isEmpty ? nil : readLayout(for: scheduled.rule))
                 report(session?.skipsItems == true && session?.layout == nil
@@ -37,7 +41,7 @@ enum ActionRunner {
             post(strokes)
             log.notice("action=\(String(describing: scheduled.action), privacy: .public) index=\(current.index ?? -1) highlighted=\(highlighted ?? -1) keys=\(strokes.count) refused=\(current.refusedToSelect)")
             session = current
-            if scheduled.action == .select || scheduled.action == .cancel {
+            if endsSession {
                 session = nil
             }
         }
